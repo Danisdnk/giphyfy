@@ -3,21 +3,13 @@ import { AddCategoria } from './AddCategoria';
 
 
 export const GifExpertApp = () => {
-    const [categorias, setCategorias] = useState(['enfadado', 'iconico', 'wow'])
 
-    const actualizarState = () => {
-        setCategorias([...categorias, "nuevo valor"]);
-    }
+    const [categorias, setCategorias] = useState([])
 
     return (
         <>
-            <button onClick={actualizarState}>
-                texto
-            </button>
-
             <h2>GifExpertApp</h2>
             {
-
                 categorias.map(cat => {
                     return <ul key={cat}>
                         {cat}
@@ -25,7 +17,7 @@ export const GifExpertApp = () => {
                 }
                 )
             }
-            <AddCategoria />
+            <AddCategoria setCategorias={setCategorias} />
             <hr />
         </>
     )
