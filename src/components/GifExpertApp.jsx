@@ -6,7 +6,6 @@ import { GifGrid } from './GifGrid';
 export const GifExpertApp = () => {
 
     const [categorias, setCategorias] = useState([])
-
     return (
         <>
             <h2>GifExpertApp</h2>
@@ -18,7 +17,6 @@ export const GifExpertApp = () => {
                         <GifGrid
                             key={categoria}
                             categoria={categoria} />
-
                     ))
                 }
             </ol>

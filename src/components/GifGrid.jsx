@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { GifGridItem } from './GifGridItem';
+import { getGifs } from '../services/getGifs';
 
 export const GifGrid = ({ categoria }) => {
+// aca podria usar un custom hook para no dejarlo en el componente 
+    const [images, setimages] = useState([]);
+    useEffect(() => {
+        getGifs(categoria)
+            .then(setimages);
 
-    const getGifs = async () => {
-        const url = 'https://api.giphy.com/v1/gifs/search?q=waifu&limit=10&api_key=hU1xrTiv6XASMzdTHjyQxMjdj0C22hMI'
-        const resp = await fetch(url);
-        const { data } = await resp.json();//aplico desescturcturacion 
-        console.log(data);
+    }, [categoria])
 
-        //devuelvo las imgs en un nuevo objeto
-        const gifs = data.map(img => {
-            return {
-                id: img.id,
-                title: img.title,
-                url: img.images?.downsized_medium.url
-            }
-        });
-    }
-        getGifs();
-
-        return (
-            <div>
+    return (
+        <>
+            <div className="card-grid">
                 <h3>{categoria}</h3>
+                {
+                    images.map(img => (
+                        <GifGridItem
+                            key={img.id}
+                            {...img}
+                        />
+                    ))
+                }
+
             </div>
-        )
-    }
+        </>
+    )
+}
