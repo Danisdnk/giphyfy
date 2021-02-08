@@ -3,7 +3,7 @@ import { GifGridItem } from './GifGridItem';
 import { getGifs } from '../services/getGifs';
 
 export const GifGrid = ({ categoria }) => {
-// aca podria usar un custom hook para no dejarlo en el componente 
+    // aca podria usar un custom hook para no dejarlo en el componente 
     const [images, setimages] = useState([]);
     useEffect(() => {
         getGifs(categoria)
@@ -13,8 +13,10 @@ export const GifGrid = ({ categoria }) => {
 
     return (
         <>
+             <div className="separador">   <h2>{categoria}</h2></div>
+
             <div className="card-grid">
-                <h3>{categoria}</h3>
+           
                 {
                     images.map(img => (
                         <GifGridItem
