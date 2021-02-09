@@ -8,7 +8,7 @@ export const GifExpertApp = () => {
     const [categorias, setCategorias] = useState([])
     return (
         <>
-            <h1 className="color-wave">GifExpertApp</h1>
+            <h1 className="color-wave">Giphyfy ♪ </h1>
             <AddCategoria setCategorias={setCategorias} />
             <hr />
             <ol>
